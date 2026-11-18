@@ -1,62 +1,53 @@
-# CP-072 AquaRoute
+# CP-072 AquaRoute - Java
 
-## Project Title
+## Project
 
 Priority-Based Water Supply Scheduling System
 
-## Description
+This is a simple class-wise Java console project. Each class has one clear responsibility, making the code easier to understand and explain.
 
-AquaRoute is a menu-driven Python program for managing water requests and tanker trips. Hospitals are served first, followed by schools and residential areas. Requests that are not fully completed remain pending for the next day.
+## Files
+
+- `Request.java` - stores one water request and calculates remaining water, priority name, and status
+- `Tanker.java` - stores one tanker and calculates remaining daily trips
+- `AquaRouteSystem.java` - contains input, scheduling, reports, and daily operations
+- `Main.java` - displays the menu and calls system methods
+- `AquaRoute_CP072_Java_Classwise_Explanation.pdf` - class-wise explanation, test cases, worked example, and viva preparation
 
 ## Requirements
 
-- Python 3
-- No external packages
-- No database
-- No GUI
+- JDK 8 or newer
+- No external library
+- No database or GUI
 
-## Run the Program
+## Compile
 
-Open PowerShell or Command Prompt in the project folder and run:
-
-```text
-python aquaroute.py
-```
-
-If the `python` command does not work on Windows, use:
+Open PowerShell or Command Prompt in this folder:
 
 ```text
-py aquaroute.py
+javac *.java
 ```
 
-## Menu Options
+## Run
 
-1. Add Water Request
-2. Add Tanker
-3. View All Requests
-4. View Tankers
-5. Schedule Today's Trips
-6. View Today's Trips
-7. End Day
-8. Area Wise Report
-0. Exit
+```text
+java Main
+```
 
-## Main Features
+## Core Features
 
-1. Water request IDs start from R101 automatically.
-2. Tanker IDs start from T1 automatically.
-3. Water requests accept 100 to 100000 litres.
-4. Tanker capacities accept 1000 to 50000 litres.
-5. Duplicate vehicle numbers are rejected.
-6. Hospitals are served before schools and residential areas.
-7. Older requests are served first when priorities are equal.
-8. Each tanker can complete two trips per day.
-9. Large requests can be divided between different trips.
-10. Empty tanker space can serve another request from the same area.
-11. Pending requests remain available on the next day.
-12. The area report displays requested, supplied, pending, and average waiting days.
+1. Add water requests with automatic IDs from R101.
+2. Add tankers with automatic IDs from T1.
+3. Reject duplicate vehicle numbers and invalid input ranges.
+4. Serve Hospital, School, and Residential requests in that order.
+5. Serve older requests first when priority is equal.
+6. Select the smallest suitable tanker, or the largest for a partial delivery.
+7. Allow two trips per tanker each day.
+8. Use spare capacity for another request in the same area.
+9. Carry pending requests to the next day.
+10. Show requested, supplied, pending, and average waiting values by area.
 
-## Worked Example Result
+## Worked Example
 
 ```text
 1. T1 (trip 1) -> Indiranagar : R102 10000L
@@ -65,13 +56,8 @@ py aquaroute.py
 4. T1 (trip 2) -> Jayanagar : R101 7000L
 ```
 
-R105 remains pending after Day 1. It receives 9000 litres on Day 2. BTM Layout then has an average waiting time of 1.0 day.
-
-## Files
-
-- `aquaroute.py` - complete Python program
-- `README.md` - project details and execution instructions
+R105 carries 9000 litres to Day 2. After it is served, BTM Layout has an average waiting time of 1.0 day.
 
 ## Limitation
 
-The program stores information only while it is running. Closing the program clears the current requests and tankers.
+Data is stored only while the program is running.
